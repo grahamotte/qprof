@@ -18,8 +18,8 @@ module QProf
 
       `git clone https://github.com/brendangregg/FlameGraph.git #{File.dirname(flamegraph_pl_path)}` unless File.exist?(flamegraph_pl_path)
 
-      result = RubyProf.profile do
-        @benchmark = Benchmark.measure do
+      @benchmark = Benchmark.measure do
+        @result = RubyProf.profile do
           yield
         end
       end
@@ -27,7 +27,7 @@ module QProf
       subtitle = %i[utime stime real]
         .map { |x| "#{x} = #{@benchmark.send(x).round(4)}s" }
         .join('; ')
-      printer = RubyProf::FlameGraphPrinter.new(result)
+      printer = RubyProf::FlameGraphPrinter.new(@result)
       File.open(run_txt_path, 'w') { |file| printer.print(file) }
       `cat #{run_txt_path} | #{flamegraph_pl_path} --title \"#{title}\" --subtitle \"#{subtitle}\" > #{run_svg_path}`
       Launchy.open(run_svg_path)
