@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    qprof (1.0.0)
+    qprof (1.0.1)
       benchmark
       launchy
       ruby-prof
