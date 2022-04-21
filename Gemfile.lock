@@ -1,0 +1,38 @@
+PATH
+  remote: .
+  specs:
+    qprof (1.0.0)
+      benchmark
+      launchy
+      ruby-prof
+      ruby-prof-flamegraph
+      securerandom
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    benchmark (0.2.0)
+    coderay (1.1.3)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    method_source (1.0.0)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    public_suffix (4.0.7)
+    ruby-prof (0.18.0)
+    ruby-prof-flamegraph (0.3.0)
+      ruby-prof (~> 0.13)
+    securerandom (0.2.0)
+
+PLATFORMS
+  x86_64-darwin-21
+
+DEPENDENCIES
+  pry
+  qprof!
+
+BUNDLED WITH
+   2.2.3
