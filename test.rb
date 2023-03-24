@@ -16,6 +16,6 @@ def fib3(n)
   n <= 1 ? n : fib3( n - 1 ) + fib3( n - 2 )
 end
 
-QProf.call('fib 1') { 25.times { |i| fib1(i) } }
-QProf.call('fib 2') { 25.times { |i| fib2(i) } }
-QProf.call('fib 3') { 25.times { |i| fib3(i) } }
+raise 'incorrect!' unless QProf.call('fib1') { 25.times.map { |i| fib1(i) }.last.last } == 75025
+raise 'incorrect!' unless QProf.call('fib2') { 25.times.map { |i| fib2(i) }.last.last } == 75025
+raise 'incorrect!' unless QProf.call('fib3') { 25.times.map { |i| fib3(i) }.last.last } == 75025

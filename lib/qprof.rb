@@ -22,7 +22,7 @@ module QProf
       # run block
       @benchmark = Benchmark.measure do
         @result = RubyProf.profile do
-          yield
+          @value = yield
         end
       end
 
@@ -34,6 +34,9 @@ module QProf
 
       # open in browser
       Launchy.open(run_svg_path)
+
+      # return any wrapped value
+      @value
     end
   end
 end
