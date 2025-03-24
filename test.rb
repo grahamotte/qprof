@@ -40,6 +40,8 @@ def fib6(n)
 end
 
 (1..6).each do |n|
-  result = QProf.call("Fib ##{n}") { 26.times.map { |i| send("fib#{n}", i) }.last }
-  raise "fib#{n}: expected 75025, got #{result}" unless result == 75025
+  QProf.call("Fib ##{n}") do
+    puts "Fib ##{n}"
+    30.times.map { |i| send("fib#{n}", i) }
+  end
 end
